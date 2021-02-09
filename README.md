@@ -4,7 +4,7 @@
  
 ## Prerequisitos
  
-Instale [WebDriver](https://www.selenium.dev/documentation/en/selenium_installation/installing_webdriver_binaries/) siguendo las instrucciones para su sistema operativo y no olvide configurar el [PATH](https://www.selenium.dev/documentation/en/webdriver/driver_requirements/)
+Instale [WebDriver](https://www.selenium.dev/documentation/en/selenium_installation/installing_webdriver_binaries/) siguendo las instrucciones para su sistema operativo (aca usamos firefox) y no olvide configurar el [PATH](https://www.selenium.dev/documentation/en/webdriver/driver_requirements/)
 
 Tener instalado python 3.6 o superior
 
