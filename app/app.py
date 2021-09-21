@@ -5,15 +5,13 @@ import time
 def process():
 	browser = webdriver.Firefox()
 	browser.get('https://www.humblebundle.com/')
-	button = browser.find_element_by_xpath("//a[@class='navbar-item not-dropdown button-title']")
+	button = browser.find_element_by_link_text("Bundles")
 	button.click()
 	time.sleep(3)
 	
 	try:
 		hrefs = browser.find_elements_by_xpath("//a[@class='full-tile-view one-third bundle']")
 		packs = []
-		# if hrefs:
-		# 	print("Found ", len(hrefs))
 		for href in hrefs:
 			link = transform_href(href)
 			title = extract_title(href)
@@ -22,13 +20,11 @@ def process():
 				packs.append({'title': title, 'link':link, "days": days})
 
 		if packs:
-			# print(packs)
 			with open('colabora.md','w') as new_file:
 				new_file.write("# Packs de libros en humble bundle\n\n")
 				today = date.today()
 				updated = "Actualizado: %s\n\n" % today.strftime("%B %d, %Y")
 				new_file.write(updated)
-				# sorted(lis, key = lambda i: i['age'])
 				for pack in sorted(packs, key = lambda i: i['days']):
 					days_left = "Es hoy, apurate!" if pack['days'] == 0 else "Dias faltantes:" + str(pack['days'])
 					name_pack = "[%s - %s](%s)\n\n" % (pack['title'],days_left, pack['link'])
